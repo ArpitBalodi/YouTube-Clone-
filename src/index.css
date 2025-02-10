@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+.Roboto{
+  font-family: "Roboto Condensed", serif;
+}
+
+.scroll-width{
+  scrollbar-width: thin;
+}
+
+.scroll-hide{
+ scrollbar-width: none;
+}
+
+h2{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.background{
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.background:hover{
+  background-color: #e1e0e0;
+}
+
+
