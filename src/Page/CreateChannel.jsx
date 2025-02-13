@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {createChannel} from "../utils/api"
+import { createChannel } from "../utils/api";
 import { useNavigate } from "react-router-dom";
 
 function CreateChannel() {
@@ -29,19 +29,22 @@ function CreateChannel() {
       <div className="w-[55%] flex flex-col h-[70%] bg-white p-9 rounded-4xl border">
         <h2 className="text-xl font-semibold mb-4">How you&apos;ll appear</h2>
 
+        {/* Profile Icon (Circle) */}
         <div className="flex flex-col items-center mb-6">
-          <div className="w-24 h-24 rounded-full flex items-center justify-center bg-gray-300 text-3xl font-bold text-white">
+          <div className="w-24 h-24 text-3xl bg-gray-300 text-white font-bold rounded-full flex items-center justify-center 
+                          max-[539px]:w-16 max-[539px]:h-16 max-[539px]:text-xl">
             {channelName ? channelName.charAt(0).toUpperCase() : "?"}
           </div>
         </div>
 
+        {/* Input Fields */}
         <div className="flex flex-col w-full items-center">
           <input
             type="text"
             placeholder="Name"
             value={channelName}
             onChange={(e) => setChannelName(e.target.value)}
-            className="w-[70%]  p-2 mb-4 border border-gray-300 rounded-md"
+            className="w-[70%] p-2 mb-4 border border-gray-300 rounded-md"
           />
           <input
             type="text"
@@ -52,6 +55,7 @@ function CreateChannel() {
           />
         </div>
 
+        {/* Buttons */}
         <div className="flex justify-end gap-4">
           <button onClick={() => navigate("/")} className="px-4 py-2 border border-gray-400 rounded-md">
             Cancel

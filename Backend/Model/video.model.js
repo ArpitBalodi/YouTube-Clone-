@@ -44,6 +44,7 @@ const videoSchema = new mongoose.Schema({
   },
   comments: {
     type: [Object],
+    default: [],
   },
 });
 

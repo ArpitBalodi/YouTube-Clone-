@@ -1,4 +1,5 @@
 import videoModel from "../Model/video.model.js";
+import mongoose from "mongoose";
 
 export function createVideo(req, res) {
     const {
@@ -54,4 +55,43 @@ export async function fetchVideos(req, res) {
         })
     }
 }
+
+
+export async function addComment(req, res) {
+    const { videoId } = req.params;  
+    const { personEmail, personComment } = req.body;  
+
+    //  Check if videoId is a valid MongoDB ObjectId
+    if (!mongoose.Types.ObjectId.isValid(videoId)) {
+        return res.status(400).json({ message: "Invalid video ID format" });
+    }
+
+    //  Check if comment & email are provided
+    if (!personEmail || !personComment) {
+        return res.status(400).json({ message: "Email and comment are required" });
+    }
+
+    try {
+        const updatedVideo = await videoModel.findByIdAndUpdate(
+            videoId,
+            { 
+                $push: { 
+                    comments: { personEmail, personComment } 
+                }
+            },
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedVideo) {
+            return res.status(404).json({ message: "Video not found" });
+        }
+
+        res.status(200).json({ message: "Comment added successfully", updatedVideo });
+    } catch (error) {
+        res.status(500).json({ message: "Error adding comment", error: error.message });
+    }
+}
+
+
+
 

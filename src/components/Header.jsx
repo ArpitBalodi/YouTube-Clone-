@@ -3,9 +3,10 @@ import { useContext, useState } from "react";
 import AuthContext from "../utils/authContext";
 
 function Header(prop) {
-  const { isLoggedIn, userName, logoutUser } = useContext(AuthContext); // Getting user handle
+  const { isLoggedIn, userName, logoutUser } = useContext(AuthContext);
   const [showLogout, setShowLogout] = useState(false);
   const [search, setSearch] = useState("");
+  const [showSearchBar, setShowSearchBar] = useState(false); // Mobile Search State
 
   function handleSideNavBar() {
     prop.setIsOpen(!prop.isOpen);
@@ -13,121 +14,136 @@ function Header(prop) {
 
   function handleSearchClick() {
     prop.setSearchVideo(search);
+    setShowSearchBar(false); // Hide search bar after searching
+  }
+
+  function openSearchBar() {
+    setShowSearchBar(true);
+    prop.setIsOpen(false); // Close side navbar on mobile
   }
 
   const firstLetter = userName ? userName.charAt(0).toUpperCase() : "";
 
   return (
-    <div className="py-1 pb-8 px-2.5 w-full fixed flex justify-between z-10 items-baseline bg-white">
+    <div className="py-1 px-2 w-full fixed flex justify-between z-10 items-center bg-white pb-[37px]">
       {/* Header Left */}
-      <div className="gap-5 flex justify-center align-middle w-fit items-center">
+      <div className="gap-2 sm:gap-3 flex items-center">
         <div
-          className="h-10 w-10 flex justify-center align-middle cursor-pointer items-center hover:bg-[#e1e0e0] rounded-full"
+          className="h-8 w-8 sm:h-10 sm:w-10 flex justify-center items-center cursor-pointer hover:bg-gray-200 rounded-full"
           onClick={handleSideNavBar}
         >
           <img
             src="https://cdn-icons-png.flaticon.com/128/7710/7710488.png"
             alt="menu"
-            className="h-4.5 w-5"
+            className="h-4 w-4 sm:h-5 sm:w-5"
           />
         </div>
 
-        <Link to="/" className="flex justify-center items-center cursor-pointer">
+        <Link to="/" className="flex items-center cursor-pointer">
           <img
             src="https://cdn-icons-png.flaticon.com/128/1384/1384060.png"
             alt="YouTube Logo"
-            className="h-8"
+            className="h-6 sm:h-7"
           />
-          <h2 className="text-xl font-semibold Roboto ml-2">YouTube</h2>
-          <sup className="text-xs">IN</sup>
+          <h2 className="text-sm sm:text-base md:text-lg font-semibold ml-1">
+            YouTube
+          </h2>
+          <sup className="text-[10px] sm:text-xs">IN</sup>
         </Link>
       </div>
 
-      {/* Header Center */}
-      <div className="w-[55%] ml-30">
-        <div className="flex items-center gap-3 w-[80%]">
-          <div className="flex border rounded-3xl border-gray-300 items-center w-[89%] justify-around">
+      {/* Header Center (Search Bar) */}
+      <div className="hidden sm:flex w-[40%] sm:w-[50%] md:w-[55%]">
+        <div className="flex items-center gap-2 w-full">
+          <div className="flex border rounded-3xl border-gray-300 items-center w-full">
             <input
               type="text"
               placeholder="Search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="flex items-center rounded-l-3xl w-[90%] h-10 pl-5 border border-gray-300 ml-[-1px] text-[16px] focus:border-blue-500 focus:outline-none"
+              className="flex-grow h-8 sm:h-10 pl-3 text-xs sm:text-sm focus:border-blue-500 focus:outline-none"
             />
             <button
               onClick={handleSearchClick}
-              className="w-[58px] h-10 flex justify-center items-center cursor-pointer bg-[#f0f0f0] hover:bg-[#e1e0e0] rounded-r-2xl"
+              className="w-[40px] sm:w-[50px] h-8 sm:h-10 flex justify-center items-center bg-gray-200 hover:bg-gray-300 rounded-r-3xl"
             >
               <img
                 src="https://cdn-icons-png.flaticon.com/128/2811/2811806.png"
-                className="h-6"
+                className="h-4 sm:h-5"
               />
             </button>
           </div>
 
-          <div className="h-10 w-10 flex items-center justify-center rounded-full bg-[#f0f0f0] hover:bg-[#e1e0e0]">
+          <div className="hidden sm:flex h-8 sm:h-10 w-8 sm:w-10 items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300">
             <img
               src="https://cdn-icons-png.flaticon.com/128/7175/7175253.png"
               alt="mic"
-              className="h-4.5 w-4"
+              className="h-3.5 sm:h-4 w-3.5 sm:w-4"
             />
           </div>
         </div>
       </div>
 
       {/* Header Right */}
-      <div className="flex w-[15%] h-10 items-center ">
+      <div className="flex items-center gap-3 sm:gap-4">
+        {/* Mobile Search Icon */}
+        <div className="sm:hidden cursor-pointer" onClick={openSearchBar}>
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/2811/2811806.png"
+            alt="search"
+            className="h-5 w-5"
+          />
+        </div>
+
         {isLoggedIn ? (
-          <div className="flex gap-6 h-full items-center ">
-            {/* Create Button */}
-            <Link to="/create" className="cursor-pointer flex items-center gap-1 bg-[#f0f0f0] hover:bg-[#e1e0e0] rounded-[20px] py-1.5 px-3 mt-1.5">
+          <div className="flex gap-3 sm:gap-4 items-center">
+            <Link
+              to="/create"
+              className="cursor-pointer flex items-center gap-1 bg-gray-200 hover:bg-gray-300 rounded-[20px] py-1 px-2 sm:px-3"
+            >
               <img
                 src="https://cdn-icons-png.flaticon.com/128/748/748113.png"
                 alt="Create"
-                className="h-5"
+                className="h-4 sm:h-5"
               />
-              <p>Create</p>
+              <p className="hidden md:block">Create</p>
             </Link>
 
-            {/* Notifications Icon */}
             <div className="cursor-pointer">
               <img
                 src="https://cdn-icons-png.flaticon.com/128/1827/1827347.png"
                 alt="Notifications"
-                className="h-6"
+                className="h-4 sm:h-5"
               />
             </div>
 
-            {/* Profile Icon with Clickable Logout */}
+            {/* Profile Dropdown */}
             <div className="relative cursor-pointer">
-              {/* Profile Icon (First Letter of Username) */}
               <div
-                className="relative cursor-pointer h-10 w-10 flex items-center justify-center rounded-full bg-blue-500 text-white font-bold text-lg"
+                className="h-8 sm:h-10 w-8 sm:w-10 flex items-center justify-center rounded-full bg-blue-500 text-white font-bold text-sm sm:text-lg"
                 onClick={() => setShowLogout(!showLogout)}
               >
                 {firstLetter}
               </div>
 
-              {/* Logout & View Channel Dropdown */}
               {showLogout && (
-                <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-300 shadow-md rounded-md">
-                  <p className="flex justify-center px-4 py-2 text-lg rounded-md cursor-default">{userName}</p>
-                  {/* View Your Channel Option */}
+                <div className="absolute right-0 mt-2 w-36 sm:w-40 bg-white border shadow-md rounded-md">
+                  <p className="flex justify-center px-4 py-2 text-sm sm:text-lg">
+                    {userName}
+                  </p>
                   <Link
-                    to={`/my-channel`}
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
+                    to="/my-channel"
+                    className="block px-4 py-2 text-xs sm:text-sm text-gray-700 hover:bg-gray-100"
                     onClick={() => setShowLogout(false)}
                   >
                     View Your Channel
                   </Link>
-
-                  {/* Logout Button */}
                   <button
                     onClick={() => {
                       logoutUser();
                       setShowLogout(false);
                     }}
-                    className="w-full px-4 py-2 text-sm text-red-600 hover:bg-gray-100 rounded-md"
+                    className="w-full px-4 py-2 text-xs sm:text-sm text-red-600 hover:bg-gray-100"
                   >
                     Logout
                   </button>
@@ -136,31 +152,43 @@ function Header(prop) {
             </div>
           </div>
         ) : (
-          <div className="flex w-[90%] justify-end gap-4 items-center">
-            {/* Three Dots Icon */}
-            <div className="cursor-pointer">
-              <img
-                src="https://cdn-icons-png.flaticon.com/128/8276/8276515.png"
-                alt="three-dots"
-                className="h-6"
-              />
-            </div>
-
-            {/* Sign In Button */}
-            <Link
-              to="/login"
-              className="flex border border-[#c3bfbfe8] justify-center w-24 h-9 cursor-pointer items-center gap-1.5 rounded-3xl text-[#065fd4] hover:bg-[#c4eef1] hover:border-none"
-            >
-              <img
-                src="https://cdn-icons-png.flaticon.com/128/1144/1144760.png"
-                alt="sign-in"
-                className="h-5"
-              />
-              <span>Sign in</span>
-            </Link>
-          </div>
+          <Link
+            to="/login"
+            className="flex border border-gray-300 justify-center w-18 sm:w-20 h-8 sm:h-9 items-center gap-1 rounded-3xl text-blue-600 hover:bg-blue-100"
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/1144/1144760.png"
+              alt="sign-in"
+              className="h-3.5 sm:h-4"
+            />
+            <span className="text-xs sm:text-sm">Sign in</span>
+          </Link>
         )}
       </div>
+
+      {/* Mobile Search Bar Overlay */}
+      {showSearchBar && (
+        <div className="fixed top-0 left-[50px] w-[85%] h-full bg-white z-50 flex flex-col items-center justify-center p-4">
+          <div className="w-[80%] flex border rounded-3xl border-gray-300 items-center">
+            <input
+              type="text"
+              placeholder="Search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="flex-grow h-10 pl-3 text-sm focus:border-blue-500 focus:outline-none"
+            />
+            <button
+              onClick={handleSearchClick}
+              className="w-12 h-10 flex justify-center items-center bg-gray-200 hover:bg-gray-300 rounded-r-3xl"
+            >
+              🔍
+            </button>
+          </div>
+          <button className="mt-4 text-red-600" onClick={() => setShowSearchBar(false)}>
+            Close
+          </button>
+        </div>
+      )}
     </div>
   );
 }

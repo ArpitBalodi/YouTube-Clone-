@@ -14,18 +14,17 @@ function Home() {
     <div>
       <SideNavBar isOpen={isOpen} />
 
-        <div
-          className={`flex flex-col overflow-x-hidden min-h-[100vh] flex-1 bg-white ${
-            isOpen ? "ml-[285px]" : "ml-[90px]"
+      <div
+        className={`flex flex-col overflow-x-hidden min-h-[100vh] flex-1 bg-white ${isOpen ? "ml-[182px] lg:ml-[245px] md:ml-[298px] sm:ml-[270px]" : "ml-[90px] lg:ml-[70px] md:ml-[50px] sm:ml-[20px]"
           }`}
-        >
-          {/* Passing selectedCategory and setSelectedCategory to Navbar */}
-          <NavBar setSelectedCategory={setSelectedCategory} selectedCategory={selectedCategory} />
-          
-          {/* Passing selectedCategory to HomeMainPage */}
-          <HomeMainPage isOpen={isOpen} selectedCategory={selectedCategory} />
-        </div>
-      
+      >
+        {/* Passing selectedCategory and setSelectedCategory to Navbar */}
+        <NavBar setSelectedCategory={setSelectedCategory} selectedCategory={selectedCategory} />
+
+        {/* Passing selectedCategory to HomeMainPage */}
+        <HomeMainPage isOpen={isOpen} selectedCategory={selectedCategory} />
+      </div>
+
     </div>
   );
 }

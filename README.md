@@ -1,8 +1,37 @@
-# React + Vite
+# YouTube Clone (MERN Stack)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a **YouTube Clone** built using the **MERN (MongoDB, Express.js, React.js, Node.js) stack**. It provides features similar to YouTube, including video uploads, user authentication, channel management, and more.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Frontend Features:
+- **Homepage:** Displays a list of video categories and trending videos.
+- **Search Functionality:** Users can search for videos by title, channel name, and category.
+- **Video Player:** Dedicated player to watch videos.
+- **User Authentication:** Sign up and login functionalities using local storage.
+- **Channel Management:** Users can create and manage their own channels.
+- **Category Filtering:** Browse videos based on different categories.
+- **Profile Management:** View and manage user profile details.
+
+### Backend Features:
+- Stores **users, videos, and channels** in MongoDB.
+- Provides APIs for **user authentication, video management, and channel creation.**
+- Uses JWT for **secure authentication and authorization.**
+
+## Tech Stack
+
+### Frontend:
+- React.js (with Vite for fast development)
+- Tailwind CSS for styling
+- React Router for navigation
+
+### Backend:
+- Node.js with Express.js
+- MongoDB with Mongoose for database management
+- JSON Web Tokens (JWT) for authentication
+
+## Installation
+
+### Prerequisites:
+- Node.js and npm installed
+- MongoDB installed and running
