@@ -1,8 +1,5 @@
 import mongoose from "mongoose";
 const videoSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-  },
   title: {
     type: String,
   },
@@ -13,7 +10,7 @@ const videoSchema = new mongoose.Schema({
     type: String,
   },
   category: {
-    type: String,
+    type: [Array],
   },
   thumbnail: {
     type: String,

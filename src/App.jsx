@@ -1,19 +1,22 @@
-import Header from "./components/Header";
-// import SideNavBar from "./components/SideNavbar"
 import { useState } from "react";
+import Header from "./components/Header";
 import { Outlet } from "react-router-dom";
+import { AuthProvider } from "./utils/authContext";
+import SideNavBar from "./components/SideNavbar";
 
 function App() {
-
-  const [isOpen,setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(true);
+  const [searchVideo, setSearchVideo] = useState(""); // Track search input
 
   return (
-    <div className="">
-      <Header setIsOpen={setIsOpen} isOpen={isOpen}/>
-      {/* Passing the value using context */}
-      <Outlet context={{isOpen}}/>
-    </div>
-  )
+    <AuthProvider>
+      <div>
+        <Header setIsOpen={setIsOpen} isOpen={isOpen} setSearchVideo={setSearchVideo} />
+        <SideNavBar isOpen={isOpen} />
+        <Outlet context={{ isOpen, searchVideo }} /> {/* Pass searchTerm */}
+      </div>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;

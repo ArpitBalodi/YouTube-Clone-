@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function SideNavBar({isOpen}){
 
     const commonStyles = "flex w-[94%] gap-[20px] items-center cursor-pointer px-[9px] py-[7px] rounded-[15px] hover:bg-[#e1e0e0] text-[16px] Roboto";
@@ -5,16 +7,16 @@ function SideNavBar({isOpen}){
     const span = `${isOpen?"":"hidden"}`
 
     return(
-        <div className={`h-[92vh] flex flex-col overflow-hidden hover:overflow-y-auto scroll-width hover:scroll-auto fixed top-[60px] left-0 transition-all duration-300 z-20 ${
+        <div className={`h-[92vh] flex flex-col overflow-hidden bg-white hover:overflow-y-auto scroll-width hover:scroll-auto fixed top-[60px] left-0 transition-all duration-300 z-20 ${
             isOpen ? "w-[275px] pl-4" : "w-[60px] ml-5"
         }`}>
 
                 {/* Sidbar - top */}
             <div className={sideBarSection}>
-                <div className={commonStyles}>
+                <Link to="/" className={commonStyles}>
                     <img src="https://cdn-icons-png.flaticon.com/128/1946/1946488.png" alt="home" className="h-5"/>
                     <span className={span}>Home</span>
-                </div>
+                </Link>
 
                 <div className={commonStyles}>
                     <img src="https://img.icons8.com/?size=24&id=ajczeHCWXbyR&format=png" alt="Shorts" className="h-5"/>

@@ -1,7 +1,7 @@
 import { createVideo, fetchVideos } from "../Controller/video.controller.js";
 
 
-export function routes(app){
+export function videoRoutes(app){
     app.post("/api/video",createVideo)
     app.get("/api/videos",fetchVideos)
 }
