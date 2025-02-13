@@ -1,54 +1,65 @@
-import { StrictMode } from 'react'
+import { StrictMode, lazy, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import Error from './Page/Error.jsx'
-import {createBrowserRouter,RouterProvider} from "react-router-dom"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import LoginPage from './Page/LoginPage.jsx'
-import Video from './Page/Video.jsx'
 import { AuthProvider } from './utils/authContext.jsx'
-import Home from './Page/home.jsx'
 import CreateChannel from './Page/CreateChannel.jsx'
-import MyChannel from './Page/MyChannel.jsx'
 
-//Creating Routing Configuration
+// Lazy loading for pages
+const Home = lazy(() => import('./Page/home.jsx'));
+const Video = lazy(() => import('./Page/Video.jsx'));
+const MyChannel = lazy(() => import('./Page/MyChannel.jsx'));
 
+// Creating Routing Configuration
 const appRouter = createBrowserRouter([
   {
-    path : "/",
-    element : <App/>,
+    path: "/",
+    element: <App />,
     children: [
       {
         path: "/",
-        element: <Home/>
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Home />
+          </Suspense>
+        )
       },
       {
         path: "/watch/:id",
-        element:<Video/>
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Video />
+          </Suspense>
+        )
       },
       {
         path: "/my-channel",
-        element: <MyChannel/>
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <MyChannel />
+          </Suspense>
+        )
       }
     ],
-    errorElement: <Error/>
+    errorElement: <Error />
   },
   {
     path: "/login",
-    element: <LoginPage/>
+    element: <LoginPage />
   },
   {
     path: "/create",
-    element: <CreateChannel/>
+    element: <CreateChannel />
   }
-  
 ])
-
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-  <AuthProvider>
-    <RouterProvider router={appRouter} />
-  </AuthProvider>
-</StrictMode>
+    <AuthProvider>
+      <RouterProvider router={appRouter} />
+    </AuthProvider>
+  </StrictMode>
 )
