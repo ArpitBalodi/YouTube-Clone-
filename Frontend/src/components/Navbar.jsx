@@ -2,7 +2,7 @@ function NavBar(prop) {
 
     const styleOption = "flex-none h-[30px] py-[1px] px-2.5 rounded-[5px] flex justify-center items-center cursor-pointer bg-[#f0f0f0] hover:bg-[#e1e0e0] px-[17px]"
 
-    const options = ["All", "Music", "Comedy", "Gaming", "Education", "Web Development", "News", "Cricket", "Reaction Videos", "Valorant", "PodCast", "Football", "VolleyBall"];
+    const options = ["All", "Music", "Comedy", "Gaming", "Education", "Web Development", "News", "Cricket", "Reaction Videos", "Vlog", "PodCast", "Entertainment", "VolleyBall"];
 
     const handleCategoryClick = (category) => {
         if (prop.selectedCategory === category) {

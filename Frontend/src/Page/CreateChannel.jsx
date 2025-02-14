@@ -1,11 +1,20 @@
-import { useState } from "react";
-import { createChannel } from "../utils/api";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../utils/authContext";
 
 function CreateChannel() {
   const [channelName, setChannelName] = useState("");
   const [handle, setHandle] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { isLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  // ✅ Use useEffect for Redirecting Instead of Returning Null
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/login");
+    }
+  }, [isLoggedIn, navigate]); // Runs when isLoggedIn changes
 
   // Handle form submission
   const handleSubmit = async () => {
@@ -14,13 +23,32 @@ function CreateChannel() {
       return;
     }
 
+    setLoading(true);
+
     try {
-      await createChannel({ name: channelName, handle });
-      alert("Channel Created Successfully!");
-      navigate("/");
+      const token = localStorage.getItem("token");
+
+      const response = await fetch("http://localhost:6500/api/createChannel", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `JWT ${token}`,
+        },
+        body: JSON.stringify({ name: channelName, handle }),
+      });
+
+      if (response.ok) {
+        alert("Channel Created Successfully!");
+        navigate("/");
+      } else {
+        const errorData = await response.json();
+        alert(errorData.message || "Failed to create channel.");
+      }
     } catch (error) {
       console.error("Error creating channel:", error);
-      alert("Failed to create channel.");
+      alert("Something went wrong.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -31,8 +59,7 @@ function CreateChannel() {
 
         {/* Profile Icon (Circle) */}
         <div className="flex flex-col items-center mb-6">
-          <div className="w-24 h-24 text-3xl bg-gray-300 text-white font-bold rounded-full flex items-center justify-center 
-                          max-[539px]:w-16 max-[539px]:h-16 max-[539px]:text-xl">
+          <div className="w-24 h-24 text-3xl bg-gray-300 text-white font-bold rounded-full flex items-center justify-center">
             {channelName ? channelName.charAt(0).toUpperCase() : "?"}
           </div>
         </div>
@@ -60,8 +87,12 @@ function CreateChannel() {
           <button onClick={() => navigate("/")} className="px-4 py-2 border border-gray-400 rounded-md">
             Cancel
           </button>
-          <button onClick={handleSubmit} className="px-4 py-2 bg-blue-600 text-white rounded-md">
-            Create Channel
+          <button
+            onClick={handleSubmit}
+            className="px-4 py-2 bg-blue-600 text-white rounded-md"
+            disabled={loading}
+          >
+            {loading ? "Creating..." : "Create Channel"}
           </button>
         </div>
       </div>

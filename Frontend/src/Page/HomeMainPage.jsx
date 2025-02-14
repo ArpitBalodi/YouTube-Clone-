@@ -24,7 +24,7 @@ function HomeMainPage(prop) {
             // Filter by selected category
             if (prop.selectedCategory && prop.selectedCategory !== "All") {
                 filtered = filtered.filter(video =>
-                    video.category.flat().some(cat => cat.toLowerCase().includes(prop.selectedCategory.toLowerCase()))
+                    video.category.flat().some(category => category.toLowerCase().includes(prop.selectedCategory.toLowerCase()))
                 );
             }
 

@@ -11,13 +11,13 @@ const app = express();
 app.use(cors())
 app.use(express.json())
 
-const port = 6500;
+const port = process.env.PORT || 6500;
 
 app.listen(port, () => {
     console.log(`Server is Running on port ${port}`);
 })
 
-mongoose.connect("mongodb://localhost:27017")
+mongoose.connect("mongodb+srv://YoutubeClone:arpit1@cluster0.m5hbv.mongodb.net/")
 
 const db = mongoose.connection
 
@@ -42,7 +42,7 @@ export function authenticateUser(req, res, next) {
         return res.status(401).json({ message: "No token provided" });
     }
 
-    const token = authHeader.split(" ")[1]; // Extract token after "Bearer"
+    const token = authHeader.split(" ")[1]; 
 
     jwt.verify(token, "secretKey", (err, user) => {
         if (err) {
