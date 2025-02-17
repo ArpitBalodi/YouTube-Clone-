@@ -89,7 +89,7 @@ function LoginPage() {
             )}
 
             <input
-              type="text"
+              type="email"
               name="email"
               placeholder="Email"
               value={formData.email}

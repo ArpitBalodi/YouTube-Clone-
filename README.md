@@ -10,6 +10,7 @@ The purpose of this project is to provide a **video-sharing platform** where use
 - Secure backend API integration with **MongoDB**.
 - Responsive UI with **React.js and Tailwind CSS**.
 
+
 ## Features
 ### Frontend:
 - **Homepage:** Displays trending videos and categories.
@@ -17,7 +18,6 @@ The purpose of this project is to provide a **video-sharing platform** where use
 - **Video Player:** Integrated video player for seamless playback.
 - **User Authentication:** Sign up and login functionalities with JWT-based authentication.
 - **Channel Management:** Users can create and manage their own channels.
-- **Profile Management:** Users can update their profile information.
 - **Category Filtering:** Filter videos based on different categories.
 
 ### Backend:
@@ -26,16 +26,20 @@ The purpose of this project is to provide a **video-sharing platform** where use
 - **Channel Management:** Create and retrieve channels.
 - **Database:** MongoDB with Mongoose for efficient data handling.
 
+
 ## Tech Stack
 ### Frontend:
 - React.js (with Vite for fast development)
 - Tailwind CSS for styling
 - React Router for navigation
+- Local Storage for token management
 
 ### Backend:
 - Node.js with Express.js
 - MongoDB with Mongoose
 - JSON Web Tokens (JWT) for authentication
+
+
 
 ## Installation
 ### Prerequisites:
@@ -55,10 +59,54 @@ The purpose of this project is to provide a **video-sharing platform** where use
     npm start
 
 3. **Setup the frontend:**
-    ``sh
+    ```sh
     cd Frontend
     npm install
     npm run dev
+
+### Project Structure
+
+```
+/youtube-clone
+
+/backend
+|   |-- Controller
+|   |-- Model
+|   |-- Route
+|   |-- server.js
+
+/frontend
+|   |-- src
+|   |   |-- components
+|   |   |   |-- Header.jsx
+|   |   |   |-- navbar.jsx
+|   |   |   |-- sidenavbar.jsx
+|   |   |-- pages
+|   |   |   |-- CreateChannel.jsx
+|   |   |   |-- Error.jsx
+|   |   |   |-- HomeMainPage.jsx
+|   |   |   |-- LoginPage.jsx
+|   |   |   |-- MyChannel.jsx
+|   |   |   |-- Videos.jsx
+|   |   |-- utils
+|   |   |   |-- api.js
+|   |   |   |-- authContext.jsx
+|   |   |   |-- useFetch.js
+|   |   |-- App.js
+|   |   |-- main.js
+```
+
+## Endpoints
+### User Routes:
+- ``POST /api/signup``: User registration (signup).
+- ``POST /api/login``: User login (authentication).
+### Video Routes:
+- ``POST /api/video``: Create a new video (requires authentication).
+- ``GET /api/videos``: Fetch all videos.
+- ``PATCH /api/video/:videoId/comment``: Add a comment to a specific video.
+### Channel Routes:
+- ``GET /api/channelData``: Fetch user channel data (requires authentication).
+- ``POST /api/createChannel``: Create a new channel (requires authentication).
 
 ## Usage
 - Register/Login to access all features.

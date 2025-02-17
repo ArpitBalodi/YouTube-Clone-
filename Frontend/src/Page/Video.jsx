@@ -89,10 +89,35 @@ function Video() {
                             <img src={video.videoOwnerLogo} alt="logo" className="w-[30px] md:w-[35px] h-[30px] md:h-[35px] rounded-full" />
                             <div>
                                 <h3 className="font-medium">{video.channelName}</h3>
-                                <p className="text-sm">1M subscribers</p>
+                                <p className="text-sm">{video.subscribers} subscribers</p>
                             </div>
                             <button className="rounded-3xl bg-black text-white px-4 flex justify-center items-center h-9 font-semibold ml-3">Subscribe</button>
                         </div>
+
+                        <div className="flex w-[46%] items-center gap-2">
+                            <div className="flex items-center">
+                                <button className="flex gap-2 bg-[#f0f0f0] hover:bg-[#e1e0e0] px-3.5 rounded-l-2xl py-2 cursor-pointer">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/126/126473.png" alt="like" className="h-5" />
+                                    <p className="text-sm">{video.likes}</p>
+                                </button>
+                                <button className="flex px-3.5 bg-[#f0f0f0] hover:bg-[#e1e0e0] rounded-r-2xl py-2 border-l-1 border-gray-400 cursor-pointer">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/126/126504.png" alt="dislike" className="h-5" />
+                                </button>
+                            </div>
+                            <div className="flex cursor-pointer">
+                                <button className="flex gap-2 hover:bg-[#e1e0e0] px-3.5 rounded-2xl py-2 items-center cursor-pointer bg-[#f0f0f0]">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/2958/2958783.png" alt="share" className="h-5" />
+                                    <p className="text-sm">Share</p>
+                                </button>
+                            </div>
+                            <div className="flex">
+                                <button className="flex gap-2 hover:bg-[#e1e0e0] px-3.5 rounded-2xl py-2 items-center cursor-pointer bg-[#f0f0f0]">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/3502/3502477.png" alt="download" className="h-5" />
+                                    <p className="text-sm">Download</p>
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 

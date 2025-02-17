@@ -62,7 +62,7 @@ function HomeMainPage(prop) {
                             <div className="w-full p-1.5 box-border flex flex-col">
                                 <p className="font-semibold text-[14px] sm:text-[15px] md:text-[16px]">{video.title}</p>
                                 <p className="mt-[3px] sm:mt-[4px] md:mt-[5px] text-[12px] sm:text-[14px] md:text-[16px] text-[#606060]">{video.channelName}</p>
-                                <p className="text-[12px] sm:text-[14px] md:text-[14px] text-[#606060]">{video.views}</p>
+                                <p className="text-[12px] sm:text-[14px] md:text-[14px] text-[#606060]">{video.views} views・{video.posted}</p>
                             </div>
                         </div>
                     </Link>
