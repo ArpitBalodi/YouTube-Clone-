@@ -7,7 +7,7 @@ function SideNavBar(prop) {
 
     return (
         <div className={`h-[92vh] flex flex-col overflow-hidden bg-white hover:overflow-y-auto scroll-width hover:scroll-auto fixed top-[60px] left-0 transition-all duration-300 z-20 
-            ${prop.isOpen ? "w-[180px] pl-4 sm:w-[275px]" : "w-0 sm:w-[60px] ml-2 sm:ml-5"}`}>
+            ${prop.isOpen ? "w-[180px] pl-4 sm:w-[275px]" : "w-0 sm:w-[60px] sm:ml-5"}`}>
 
             {/* Sidebar - Top */}
             <div className={sideBarSection}>

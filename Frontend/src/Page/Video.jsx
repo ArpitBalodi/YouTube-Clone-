@@ -72,13 +72,13 @@ function Video() {
     const suggestedVideos = Array.isArray(data) ? data.filter((vid) => vid._id !== params.id) : [];
 
     return (
-        <div className="flex flex-col md:flex-row py-7 pl-10 md:pl-[90px] gap-4 bg-white pt-[90px] font-sans">
+        <div className="flex flex-col md:flex-row pr-7 pl-10 md:pl-[90px] gap-4 bg-white pt-[90px] font-sans">
             {/* Left Side - Video Section */}
-            <div className="flex flex-col w-full max-w-[870px]">
+            <div className="flex flex-col w-full max-w-[870px] ">
                 <div className="w-full">
                     <iframe
                         src={video.videoUrl}
-                        className="rounded-2xl w-full h-[220px] md:h-[480px]"
+                        className="rounded-2xl w-full h-[300px] md:h-[480px]"
                         allow="autoplay"
                     ></iframe>
                 </div>
@@ -136,7 +136,7 @@ function Video() {
                                     <div className="flex gap-2.5 items-center">
                                         <p className="text-[14px] font-medium">{comment.personEmail}</p>
                                     </div>
-                                    <div className="mt-2.5 flex justify-between items-center w-full">
+                                    <div className="mt-2.5 flex flex-col sm:flex-row justify-between w-full">
                                         {editingIndex === index ? (
                                             <input
                                                 type="text"
@@ -149,11 +149,11 @@ function Video() {
                                         )}
                                         <div className="flex gap-2">
                                             {editingIndex === index ? (
-                                                <button onClick={() => handleSave(index)} className="text-blue-500 font-medium">Save</button>
+                                                <button onClick={() => handleSave(index)} className="text-blue-500 font-medium background">Save</button>
                                             ) : (
-                                                <button onClick={() => handleEdit(index)} className="text-gray-700">Edit</button>
+                                                <button onClick={() => handleEdit(index)} className="text-gray-700 background">Edit</button>
                                             )}
-                                            <button onClick={() => handleDelete(index)} className="text-red-500">Delete</button>
+                                            <button onClick={() => handleDelete(index)} className="text-red-500 background">Delete</button>
                                         </div>
                                     </div>
                                 </div>

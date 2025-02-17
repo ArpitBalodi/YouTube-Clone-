@@ -47,7 +47,7 @@ export async function UserLogin(req, res) {
     // Check if User Exists
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: "Invalid email or password" });
+      return res.status(400).json({ message: "Please Create an Account to Login" });
     }
 
     // Compare Hashed Password

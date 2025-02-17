@@ -9,7 +9,7 @@ import { AuthProvider } from './utils/authContext.jsx'
 import CreateChannel from './Page/CreateChannel.jsx'
 
 // Lazy loading for pages
-const Home = lazy(() => import('./Page/home.jsx'));
+const Home = lazy(() => import('./Page/Home.jsx'));
 const Video = lazy(() => import('./Page/Video.jsx'));
 const MyChannel = lazy(() => import('./Page/MyChannel.jsx'));
 

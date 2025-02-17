@@ -9,7 +9,7 @@ function CreateChannel() {
   const { isLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // ✅ Use useEffect for Redirecting Instead of Returning Null
+  //  Use useEffect for Redirecting Instead of Returning Null
   useEffect(() => {
     if (!isLoggedIn) {
       navigate("/login");

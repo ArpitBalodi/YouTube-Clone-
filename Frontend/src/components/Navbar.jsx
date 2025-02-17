@@ -13,7 +13,7 @@ function NavBar(prop) {
     };
 
     return (
-        <div className="flex fixed top-[82px] z-1 w-[90%] gap-4 shrink-0 h-auto overflow-x-auto scroll-hide bg-white pb-2 ml-7">
+        <div className={`flex fixed top-[82px] z-1 gap-4 shrink-0 h-auto overflow-x-auto scroll-hide bg-white pb-2 ml-7 pl-0 sm:pl-[60px] ${prop.isOpen ? "w-[80%]": "w-[96%]"}`}>
             {
                 options.map((item, index) => {
                     return (

@@ -46,7 +46,7 @@ export function authenticateUser(req, res, next) {
 
     const token = authHeader.split(" ")[1];
 
-    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {  // Secure JWT Secret
+    jwt.verify(token, "secretKey", (err, user) => {  // Secure JWT Secret
         if (err) {
             return res.status(403).json({ message: "Invalid or expired token" });
         }

@@ -61,7 +61,7 @@ function Header(prop) {
               placeholder="Search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="flex-grow h-8 sm:h-10 pl-3 text-xs sm:text-sm focus:border-blue-500 focus:outline-none"
+              className="flex-grow h-8 sm:h-10 pl-4 text-xs sm:text-[17px] focus:border-blue-500 focus:outline-none"
             />
             <button
               onClick={handleSearchClick}
@@ -168,7 +168,7 @@ function Header(prop) {
 
       {/* Mobile Search Bar Overlay */}
       {showSearchBar && (
-        <div className="fixed top-0 left-[50px] w-[85%] h-full bg-white z-50 flex flex-col items-center justify-center p-4">
+        <div className="fixed top-0 left-0 w-[100%] h-full bg-white z-50 flex flex-col items-center justify-center p-4">
           <div className="w-[80%] flex border rounded-3xl border-gray-300 items-center">
             <input
               type="text"

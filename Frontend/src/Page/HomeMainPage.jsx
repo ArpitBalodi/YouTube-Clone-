@@ -37,7 +37,7 @@ function HomeMainPage(prop) {
 
     return (
         <div className={`grid box-border gap-4 pt-[80px] pb-5 mt-[50px] bg-white px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 
-            grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:${prop.isOpen ? "grid-cols-[388px_388px_388px]" : "grid-cols-[456px_456px_456px]"}`}>
+            grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:${prop.isOpen ? "grid-cols-[388px_388px_388px]" : "grid-cols-[456px_456px_456px]"} ml-[20px]`}>
 
             {filteredVideos.length > 0 ? (
                 filteredVideos.map(video => (

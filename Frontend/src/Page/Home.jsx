@@ -15,11 +15,11 @@ function Home() {
       <SideNavBar isOpen={isOpen} />
 
       <div
-        className={`flex flex-col overflow-x-hidden min-h-[100vh] flex-1 bg-white ${isOpen ? "ml-[182px] lg:ml-[245px] md:ml-[298px] sm:ml-[270px]" : "ml-[90px] lg:ml-[70px] md:ml-[50px] sm:ml-[20px]"
+        className={`flex flex-col overflow-x-hidden min-h-[100vh] flex-1 bg-white ${isOpen ? "ml-[182px] lg:ml-[245px] md:ml-[298px] sm:ml-[270px]" : "ml-[0px] lg:ml-[0px] md:ml-[0px] sm:ml-[0px]"
           }`}
       >
         {/* Passing selectedCategory and setSelectedCategory to Navbar */}
-        <NavBar setSelectedCategory={setSelectedCategory} selectedCategory={selectedCategory} />
+        <NavBar setSelectedCategory={setSelectedCategory} selectedCategory={selectedCategory} isOpen={isOpen}/>
 
         {/* Passing selectedCategory to HomeMainPage */}
         <HomeMainPage isOpen={isOpen} selectedCategory={selectedCategory} />

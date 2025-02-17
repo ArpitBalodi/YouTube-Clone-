@@ -63,8 +63,8 @@ function LoginPage() {
   
 
   return (
-    <div className="flex items-center justify-center w-full h-[100vh] bg-[rgba(240,244,249,1)]">
-      <div className="w-[70%] flex h-[70%] bg-white p-9 rounded-4xl">
+    <div className="flex items-center justify-center w-full h-full sm:h-[100vh] bg-[rgba(240,244,249,1)]">
+      <div className="w-[70%] flex h-[90%] sm:h-[90%] lg:h-[70%] bg-white p-9 rounded-4xl flex-col sm:flex-row items-center justify-between sm:items-baseline">
         <div className="flex flex-col gap-5 w-1/2">
         <img
               src="https://cdn-icons-png.flaticon.com/128/300/300221.png"
