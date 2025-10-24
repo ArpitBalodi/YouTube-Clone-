@@ -6,7 +6,7 @@ function HomeMainPage(prop) {
     const { searchVideo } = useOutletContext(); 
     const [filteredVideos, setFilteredVideos] = useState([]);
 
-    const { data, error, loading } = useFetch("http://localhost:6500/api/videos");
+    const { data, error, loading } = useFetch(`${import.meta.env.VITE_API_URL}/api/videos`);
 
     useEffect(() => {
         if (data) {

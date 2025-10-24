@@ -5,7 +5,7 @@ import AuthContext from "../utils/authContext";
 import { addComment } from "../utils/api";
 
 function Video() {
-    const { data, error, loading } = useFetch("http://localhost:6500/api/videos");
+    const { data, error, loading } = useFetch(`${import.meta.env.VITE_API_URL}/api/videos`);
     const params = useParams();
     const { userName } = useContext(AuthContext);
 

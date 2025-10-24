@@ -28,7 +28,7 @@ function CreateChannel() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://localhost:6500/api/createChannel", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/createChannel`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

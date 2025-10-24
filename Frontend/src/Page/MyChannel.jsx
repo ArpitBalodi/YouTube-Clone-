@@ -19,7 +19,7 @@ function MyChannel() {
             }
 
             try {
-                const response = await fetch("http://localhost:6500/api/channelData", {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/channelData`, {
                     method: "GET",
                     headers: {
                         Authorization: `JWT ${token}`,
@@ -44,7 +44,7 @@ function MyChannel() {
 
         async function fetchChannelVideos() {
             try {
-                const response = await fetch("http://localhost:6500/api/videos");
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/videos`);
                 const data = await response.json();
 
                 if (Array.isArray(data)) {
