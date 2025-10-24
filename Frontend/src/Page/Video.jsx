@@ -189,11 +189,11 @@ function Video() {
             </div>
 
             {/* Right Side - Suggested Videos */}
-            <div className="w-full md:w-[30%] flex flex-col gap-4">
+            <div className="w-full md:w-[50%] flex flex-col gap-4">
                 {suggestedVideos.map((vid) => (
                     <Link key={vid._id} to={`/watch/${vid._id}`} className="flex gap-3 flex-col md:flex-col xl:flex-row sm:flex-row">
-                        <img src={vid.thumbnail} alt="Video Thumbnail" className="w-[220px] h-[100px] rounded-lg" />
-                        <div>
+                        <img src={vid.thumbnail} alt="Video Thumbnail" className="w-[35%] h-[100px] rounded-lg" />
+                        <div className="w-[50%]">
                             <h3 className="font-semibold text-sm">{vid.title}</h3>
                             <p className="text-xs">{vid.channelName}</p>
                             <p className="text-xs">{vid.views} views • {vid.posted}</p>
